@@ -363,10 +363,6 @@ function runDownload (torrentId) {
 
     function updateMetadata () {
       clivas.clear()
-      clivas.line(
-        '{green:fetching torrent metadata from} {bold:%s} {green:peers}',
-        torrent.numPeers
-      )
     }
 
     torrent.on('metadata', function () {
@@ -374,7 +370,6 @@ function runDownload (torrentId) {
       torrent.removeListener('wire', updateMetadata)
 
       clivas.clear()
-      clivas.line('{green:verifying existing torrent data...}')
     })
   })
 
@@ -383,14 +378,6 @@ function runDownload (torrentId) {
       var numActiveWires = torrent.wires.reduce(function (num, wire) {
         return num + (wire.downloaded > 0)
       }, 0)
-      clivas.line('')
-      clivas.line(
-        'torrent downloaded {green:successfully} from {bold:%s/%s} {green:peers} ' +
-        'in {bold:%ss}!',
-        numActiveWires,
-        torrent.numPeers,
-        getRuntime()
-      )
     }
     torrentDone()
   })
@@ -571,10 +558,6 @@ function runDownloadMeta (torrentId) {
 
     function updateMetadata () {
       clivas.clear()
-      clivas.line(
-        '{green:fetching torrent metadata from} {bold:%s} {green:peers}',
-        torrent.numPeers
-      )
     }
 
     torrent.on('metadata', function () {
@@ -582,7 +565,6 @@ function runDownloadMeta (torrentId) {
       torrent.removeListener('wire', updateMetadata)
 
       clivas.clear()
-      clivas.line(`{green:saving the .torrent file data to ${torrentFilePath} ..}`)
       fs.writeFileSync(torrentFilePath, this.torrentFile)
       gracefulExit()
     })
