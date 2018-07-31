@@ -362,14 +362,10 @@ function runDownload (torrentId) {
     torrent.on('wire', updateMetadata)
 
     function updateMetadata () {
-      clivas.clear()
     }
 
     torrent.on('metadata', function () {
-      clivas.clear()
-      torrent.removeListener('wire', updateMetadata)
 
-      clivas.clear()
     })
   })
 
