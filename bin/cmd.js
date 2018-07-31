@@ -240,7 +240,7 @@ function runHelp () {
   fs.readFileSync(path.join(__dirname, 'ascii-logo.txt'), 'utf8')
     .split('\n')
     .forEach(function (line) {
-      clivas.line('{bold:' + line.substring(0, 20) + '}{red:' + line.substring(20) + '}')
+
     })
 
   console.log(function () {
