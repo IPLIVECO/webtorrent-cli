@@ -240,6 +240,7 @@ function runHelp () {
   fs.readFileSync(path.join(__dirname, 'ascii-logo.txt'), 'utf8')
     .split('\n')
     .forEach(function (line) {
+      clivas.line('{bold:' + line.substring(0, 20) + '}{red:' + line.substring(20) + '}')
     })
 
   console.log(function () {
@@ -619,10 +620,11 @@ function drawTorrent (torrent) {
     if (seeding) line('{green:Info hash: }' + torrent.infoHash)
     if (playerName) {
       line(
-        '{bold:' + '<a href="' + href + '"' + '>link</a>' + '}'
+        '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}'
       )
     } else if (server) {
-      line('{green:Server running: }{bold:' + href + '}')
+      line(
+      '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}')
     }
     line('')
 
