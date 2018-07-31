@@ -240,7 +240,6 @@ function runHelp () {
   fs.readFileSync(path.join(__dirname, 'ascii-logo.txt'), 'utf8')
     .split('\n')
     .forEach(function (line) {
-
     })
 
   console.log(function () {
