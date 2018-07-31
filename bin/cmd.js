@@ -647,10 +647,10 @@ function drawTorrent (torrent) {
     if (playerName) {
       line(
         '{green:Streaming to: }{bold:' + playerName + '}  ' +
-        '{green:Server running at: }{bold:' + href + '}'
+        '{green:Server running: }{bold:' + href + '}'
       )
     } else if (server) {
-      line('{green:Server running at: }{bold:' + href + '}')
+      line('{green:Server running: }{bold:' + href + '}')
     }
     if (argv.out) line('{green:Downloading to: }{bold:' + argv.out + '}')
     line(
