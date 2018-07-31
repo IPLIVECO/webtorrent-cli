@@ -639,37 +639,13 @@ function drawTorrent (torrent) {
 
     clivas.clear()
 
-    line(
-      '{green:' + (seeding ? 'Seeding' : 'Downloading') + ': }' +
-      '{bold:' + torrent.name + '}'
-    )
     if (seeding) line('{green:Info hash: }' + torrent.infoHash)
     if (playerName) {
       line(
-        '{green:Streaming to: }{bold:' + playerName + '}  ' +
-        '{green:Server running: }{bold:' + href + '}'
+        '{bold:' + '<a href="' + href + '"' + '>link</a>' + '}'
       )
     } else if (server) {
       line('{green:Server running: }{bold:' + href + '}')
-    }
-    if (argv.out) line('{green:Downloading to: }{bold:' + argv.out + '}')
-    line(
-      '{green:Speed: }{bold:' + prettierBytes(speed) + '/s}  ' +
-      '{green:Downloaded:} {bold:' + prettierBytes(torrent.downloaded) + '}' +
-      '/{bold:' + prettierBytes(torrent.length) + '}  ' +
-      '{green:Uploaded:} {bold:' + prettierBytes(torrent.uploaded) + '}'
-    )
-    line(
-      '{green:Running time:} {bold:' + runtime + '}  ' +
-      '{green:Time remaining:} {bold:' + estimate + '}  ' +
-      '{green:Peers:} {bold:' + unchoked.length + '/' + torrent.numPeers + '}'
-    )
-    if (argv.verbose) {
-      line(
-        '{green:Queued peers:} {bold:' + torrent._numQueued + '}  ' +
-        '{green:Blocked peers:} {bold:' + blockedPeers + '}  ' +
-        '{green:Hotswaps:} {bold:' + hotswaps + '}'
-      )
     }
     line('')
 
@@ -704,7 +680,6 @@ function drawTorrent (torrent) {
         var reqStats = wire.requests.map(function (req) { return req.piece })
         args.push(tags.join(', '), reqStats.join(' '))
       }
-      line.apply(undefined, [].concat(str, args))
 
       peerslisted += 1
       return linesRemaining > 4
