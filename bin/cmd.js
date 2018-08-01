@@ -589,8 +589,10 @@ var drawInterval
 function drawTorrent (torrent) {
   if (!argv.quiet) {
     process.stdout.write(Buffer.from('G1tIG1sySg==', 'base64')) // clear for drawing
-    drawInterval = setInterval(draw, 1000)
-    drawInterval.unref()
+    draw
+    setTimeout(draw, 10000)
+//    drawInterval = setInterval(draw, 10000)
+//    drawInterval.unref()
   }
 
   var hotswaps = 0
@@ -617,13 +619,13 @@ function drawTorrent (torrent) {
 
     clivas.clear()
 
-    if (seeding) line('{green:Info hash: }' + torrent.infoHash)
     if (playerName) {
       line(
-        '{bold:' + '<a href="' + href + '"' + '>link</a>' + '}'
+        '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}'
       )
     } else if (server) {
-      line('{green:Server running: }{bold:' + href + '}')
+      line(
+      '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}')
     }
     line('')
 
@@ -662,11 +664,6 @@ function drawTorrent (torrent) {
       peerslisted += 1
       return linesRemaining > 4
     })
-
-    line('{60:}')
-    if (torrent.numPeers > peerslisted) {
-      line('... and %s more', torrent.numPeers - peerslisted)
-    }
 
     clivas.flush(true)
 
