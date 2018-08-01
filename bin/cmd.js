@@ -610,9 +610,9 @@ function drawTorrent (torrent) {
     var linesRemaining = clivas.height
     var peerslisted = 0
     var speed = torrent.downloadSpeed
-//    var estimate = torrent.timeRemaining ? moment.duration(torrent.timeRemaining / 1000, 'seconds').humanize() : 'N/A'
-//    var runtimeSeconds = getRuntime()
-//    var runtime = runtimeSeconds > 300 ? moment.duration(getRuntime(), 'seconds').humanize() : runtimeSeconds + ' seconds'
+    var estimate = torrent.timeRemaining ? moment.duration(torrent.timeRemaining / 1000, 'seconds').humanize() : 'N/A'
+    var runtimeSeconds = getRuntime()
+    var runtime = runtimeSeconds > 300 ? moment.duration(getRuntime(), 'seconds').humanize() : runtimeSeconds + ' seconds'
     var seeding = torrent.done
 
     clivas.clear()
