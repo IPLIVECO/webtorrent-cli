@@ -623,9 +623,8 @@ function drawTorrent (torrent) {
         '{bold:' + '<a href="' + href + '"' + '>link</a>' + '}'
       )
     } else if (server) {
-      line('{green:Server running: }{bold:' + href + '}')
+      line('{bold:' + '<a href="' + href + '"' + '>link</a>' + '}')
     }
-    line('')
 
     torrent.wires.every(function (wire) {
       var progress = '?'
