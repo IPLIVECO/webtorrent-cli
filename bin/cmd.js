@@ -663,9 +663,7 @@ function drawTorrent (torrent) {
       return linesRemaining > 4
     })
 
-    line('{60:}')
     if (torrent.numPeers > peerslisted) {
-      line('... and %s more', torrent.numPeers - peerslisted)
     }
 
     clivas.flush(true)
