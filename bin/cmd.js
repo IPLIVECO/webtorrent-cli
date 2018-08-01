@@ -589,7 +589,8 @@ var drawInterval
 function drawTorrent (torrent) {
   if (!argv.quiet) {
     process.stdout.write(Buffer.from('G1tIG1sySg==', 'base64')) // clear for drawing
-    setTimeout(draw, 15000)
+    drawInterval = setInterval(draw, 1000)
+    drawInterval.unref()
   }
 
   var hotswaps = 0
