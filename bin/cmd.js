@@ -589,8 +589,10 @@ var drawInterval
 function drawTorrent (torrent) {
   if (!argv.quiet) {
     process.stdout.write(Buffer.from('G1tIG1sySg==', 'base64')) // clear for drawing
-    drawInterval = setInterval(draw, 1000)
-    drawInterval.unref()
+    draw
+    setTimeout(draw, 10000)
+//    drawInterval = setInterval(draw, 10000)
+//    drawInterval.unref()
   }
 
   var hotswaps = 0
@@ -615,18 +617,12 @@ function drawTorrent (torrent) {
     var runtime = runtimeSeconds > 300 ? moment.duration(getRuntime(), 'seconds').humanize() : runtimeSeconds + ' seconds'
     var seeding = torrent.done
 
-    clivas.clear()
+    //clivas.clear()
 
-    if (seeding) line('{green:Info hash: }' + torrent.infoHash)
-    if (playerName) {
-      line(
-        '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}'
-      )
-    } else if (server) {
+    if (server) {
       line(
       '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}')
     }
-    line('')
 
     torrent.wires.every(function (wire) {
       var progress = '?'
@@ -664,7 +660,7 @@ function drawTorrent (torrent) {
       return linesRemaining > 4
     })
 
-    clivas.flush(true)
+//    clivas.flush(true)
 
     function line () {
       clivas.line.apply(clivas, arguments)
