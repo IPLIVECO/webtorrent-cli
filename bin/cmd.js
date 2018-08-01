@@ -617,12 +617,17 @@ function drawTorrent (torrent) {
     var runtime = runtimeSeconds > 300 ? moment.duration(getRuntime(), 'seconds').humanize() : runtimeSeconds + ' seconds'
     var seeding = torrent.done
 
-    //clivas.clear()
+    clivas.clear()
 
-    if (server) {
+    if (playerName) {
+      line(
+        '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}'
+      )
+    } else if (server) {
       line(
       '{bold:' + '<a href=' + '"' + href + '"' + '>link</a>' + '}')
     }
+    line('')
 
     torrent.wires.every(function (wire) {
       var progress = '?'
@@ -660,7 +665,7 @@ function drawTorrent (torrent) {
       return linesRemaining > 4
     })
 
-//    clivas.flush(true)
+    clivas.flush(true)
 
     function line () {
       clivas.line.apply(clivas, arguments)
